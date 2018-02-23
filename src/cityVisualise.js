@@ -23,12 +23,11 @@ function cityVisualiserFunc(city) {
             `));
         })
         .catch(function(error) {
-            $('#resultCity').html($(`<h2>An Error has Ocurred</h2>
-            <img src="wasdasd" alt="weatherIcon: noresult">`));
+            $('#resultCity').html($(htmlProvider.cityNotFoundError(error)));
         });
 
     $.get(forecastWeather)
-        .then(function(result) {
+        .then(function(jsonResult) {
 
         })
         .catch(function(error) {

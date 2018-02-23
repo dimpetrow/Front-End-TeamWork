@@ -1,0 +1,23 @@
+#city-weather {
+    display: inline-block;
+    width: 30%;
+    height: inherit;
+}
+
+#city-addit-info {
+    display: inline-block;
+    width: 60%;
+    height: inherit;
+
+    vertical-align: top;
+    
+    background-color: green;
+}
+
+.weather-icon {
+    width: 100%;
+}
+
+body {
+    background-color: rgb(128, 84, 2);
+}
