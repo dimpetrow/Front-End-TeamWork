@@ -5,11 +5,11 @@ function cityVisualiserFunc(city) {
     $.get(currentWeather)
         .then(function(result) {
             var table = $('<table>').append( '<tr><td>' + 'Wind Speed' + '</td>' + '<td>' + result.wind.speed + ' m/s' + '</td>' + '</tr>' )
-                                    .append( '<tr><td>' + 'Wind Direction' + '</td>' + '<td>' + result.wind.deg  + '</td>' + '</tr>' )
+                                    .append( '<tr><td>' + 'Wind Direction' + '</td>' + '<td>' + windDirectionProvider(result.wind.deg)  + '</td>' + '</tr>' )
                                     .append( '<tr><td>' + 'Humidity' + '</td>' + '<td>' + result.main.humidity  + ' %' + '</td>' + '</tr>' )
                                     .append( '<tr><td>' + 'Pressure' + '</td>' + '<td>' + result.main.pressure + ' hPa'  + '</td>' + '</tr>' )
-                                    .append( '<tr><td>' + 'Sunrise' + '</td>' + '<td>' + result.sys.sunrise + ' hPa'  + '</td>' + '</tr>' )
-                                    .append( '<tr><td>' + 'Sunset' + '</td>' + '<td>' + result.sys.sunset + ' hPa'  + '</td>' + '</tr>' )[0];
+                                    .append( '<tr><td>' + 'Sunrise' + '</td>' + '<td>' +  unixToNormal(result.sys.sunrise) +  '</td>' + '</tr>' )
+                                    .append( '<tr><td>' + 'Sunset' + '</td>' + '<td>' + unixToNormal(result.sys.sunset) +  '</td>' + '</tr>' )[0];
 
             var img = $('<img>').attr("src",`weatherIcons/${result.weather[0].icon}.png`).width("50px")[0];
             $('#resultCity').html($(`

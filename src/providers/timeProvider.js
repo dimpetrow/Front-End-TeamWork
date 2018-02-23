@@ -1,4 +1,4 @@
-function timeProviderFunc(unixTime) {
+function unixToNormal(unixTime) {
     function str_pad(n) {
         return String("0" + n).slice(-2);
     }
