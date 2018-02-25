@@ -1,5 +1,9 @@
 const windDirectionProvider = function windDirectionProviderFunc(degrees) {
-    degrees = parseFloat(degrees) || 0;
+    degrees = parseFloat(degrees) || null;
+
+    if (degrees == null) {
+        return null;
+    }
 
     if (degrees >= 348.75 && degrees < 11.25) {
         return "North";

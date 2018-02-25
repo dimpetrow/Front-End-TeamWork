@@ -4,26 +4,38 @@ function cityVisualiserFunc(city) {
 
     $.get(currentWeather)
         .then(function(result) {
-            var table = $('<table>').append( '<tr><td>' + 'Wind Speed' + '</td>' + '<td>' + result.wind.speed + ' m/s' + '</td>' + '</tr>' )
-                                    .append( '<tr><td>' + 'Wind Direction' + '</td>' + '<td>' + windDirectionProvider(result.wind.deg)  + '</td>' + '</tr>' )
-                                    .append( '<tr><td>' + 'Humidity' + '</td>' + '<td>' + result.main.humidity  + ' %' + '</td>' + '</tr>' )
-                                    .append( '<tr><td>' + 'Pressure' + '</td>' + '<td>' + result.main.pressure + ' hPa'  + '</td>' + '</tr>' )
-                                    .append( '<tr><td>' + 'Sunrise' + '</td>' + '<td>' +  unixToNormal(result.sys.sunrise) +  '</td>' + '</tr>' )
-                                    .append( '<tr><td>' + 'Sunset' + '</td>' + '<td>' + unixToNormal(result.sys.sunset) +  '</td>' + '</tr>' )[0];
+            var table = $('<table>').append( '<tr><td>' + 'Wind' + '</td>' + '<td>' + result.wind.speed + ' m/s');
 
-            var img = $('<img>').attr("src",`weatherIcons/${result.weather[0].icon}.png`).width("50px")[0];
-            $('#resultCity').html($(`
-            <div>
+            var windDir = windDirectionProvider(result.wind.deg);
+
+            if (windDir != null) {
+                table.append( '\n' + windDir  + '</td>' + '</tr>' )
+            }
+            else {
+                table.append( '</td>' + '</tr>' );
+            }
+
+            table.append( '<tr><td>' + 'Humidity' + '</td>' + '<td>' + result.main.humidity  + ' %' + '</td>' + '</tr>' )
+                .append( '<tr><td>' + 'Pressure' + '</td>' + '<td>' + result.main.pressure + ' hPa'  + '</td>' + '</tr>' )
+                .append( '<tr><td>' + 'Sunrise' + '</td>' + '<td>' +  unixToNormal(result.sys.sunrise) +  '</td>' + '</tr>' )
+                .append( '<tr><td>' + 'Sunset' + '</td>' + '<td>' + unixToNormal(result.sys.sunset) +  '</td>' + '</tr>' );
+
+            var img = $('<img>').attr("src",`images/${result.weather[0].icon}.png`)[0];
+
+            $('#result-current-weather').html($(`
+            <div id="city-weather">
                 <h2>${result.name}</h2>
                 ${img.outerHTML}
+                <p>${Math.round(result.main.temp - 273.15)} °C</p>
+                <p>${result.weather[0].description}</p>
             </div>
-            <div>
-                ${table.outerHTML}
+            <div id="city-addit-info">
+                ${table[0].outerHTML}
             </div>
             `));
         })
         .catch(function(error) {
-            $('#resultCity').html($(htmlProvider.cityNotFoundError(error)));
+            $('#result-current-weather').html($(htmlProvider.cityNotFoundError(error)));
         });
 
     $.get(forecastWeather)

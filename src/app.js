@@ -1,8 +1,8 @@
-// cityVisualiserFunc("sofia");
+cityVisualiserFunc("sofia");
 
-$("#searchInput input").keyup(function(event) {
+$("#search-input input").keyup(function(event) {
     if (event.keyCode === 13) {
-        var city = ($("#searchInput input")).val();
+        var city = ($("#search-input input")).val();
 
         cityVisualiserFunc(city);
     }
