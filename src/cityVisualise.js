@@ -4,15 +4,15 @@ function cityVisualiserFunc(city) {
 
     $.get(currentWeather)
         .then(function(result) {
-            var table = $('<table>').append( '<tr><td>' + 'Wind' + '</td>' + '<td>' + result.wind.speed + ' m/s');
+            var table = $('<table>');
 
             var windDir = windDirectionProvider(result.wind.deg);
 
             if (windDir != null) {
-                table.append( '\n' + windDir  + '</td>' + '</tr>' )
+                table.append( '<tr><td>' + 'Wind' + '</td>' + '<td>' + result.wind.speed + ' m/s' + '<br>' + windDir  + '</td>' + '</tr>' )
             }
             else {
-                table.append( '</td>' + '</tr>' );
+                table.append( '<tr><td>' + 'Wind' + '</td>' + '<td>' + result.wind.speed + ' m/s' + '</td>' + '</tr>' );
             }
 
             table.append( '<tr><td>' + 'Humidity' + '</td>' + '<td>' + result.main.humidity  + ' %' + '</td>' + '</tr>' )
@@ -24,7 +24,7 @@ function cityVisualiserFunc(city) {
 
             $('#result-current-weather').html($(`
             <div id="city-weather">
-                <h2>${result.name}</h2>
+                <h1>${result.name}</h1>
                 ${img.outerHTML}
                 <p>${Math.round(result.main.temp - 273.15)} °C</p>
                 <p>${result.weather[0].description}</p>
@@ -35,14 +35,12 @@ function cityVisualiserFunc(city) {
             `));
         })
         .catch(function(error) {
-            $('#result-current-weather').html($(htmlProvider.cityNotFoundError(error)));
+            alert('Invalid City!')
         });
 
     $.get(forecastWeather)
-        .then(function(jsonResult) {
-
-        })
-        .catch(function(error) {
-            
+        .then(function(result) {
+            var intervals = result.list.slice(0,8);
+            console.log(intervals);
         });
 }

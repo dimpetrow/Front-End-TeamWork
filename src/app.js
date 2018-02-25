@@ -7,3 +7,5 @@ $("#search-input input").keyup(function(event) {
         cityVisualiserFunc(city);
     }
 });
+
+otherCitiesVisualize(['Sofia', 'Varna', 'Plovdiv', 'Burgas', 'Veliko Tarnovo']);
