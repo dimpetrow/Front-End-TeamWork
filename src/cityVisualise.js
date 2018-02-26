@@ -4,20 +4,38 @@ function cityVisualiserFunc(city) {
 
     $.get(currentWeather)
         .then(function (result) {
-            var table = $('<table>');
-
+            // var table = $('<table>');
+            var tableBuider = new TableBuilder();
+            var tableRow = null;
+            
             var windDir = windDirectionProvider(result.wind.deg);
-
+            
             if (windDir != null) {
-                table.append('<tr><td>' + 'Wind' + '</td>' + '<td>' + result.wind.speed + ' m/s' + '<br>' + windDir + '</td>' + '</tr>')
+                // table.append('<tr><td>' + 'Wind' + '</td>' + '<td>' + result.wind.speed + ' m/s' + '<br>' + windDir + '</td>' + '</tr>')
+                tableRow = (new TableRow()).AppendCol("Wind").AppendCol(result.wind.speed + ' m/s' + '<br>' + windDir);
+                tableBuider.AppendRow(tableRow);
+                
             } else {
-                table.append('<tr><td>' + 'Wind' + '</td>' + '<td>' + result.wind.speed + ' m/s' + '</td>' + '</tr>');
+                // table.append('<tr><td>' + 'Wind' + '</td>' + '<td>' + result.wind.speed + ' m/s' + '</td>' + '</tr>');
+                tableRow = (new TableRow()).AppendCol("Wind").AppendCol(result.wind.speed + ' m/s');
+                tableBuider.AppendRow(tableRow);
             }
 
-            table.append('<tr><td>' + 'Humidity' + '</td>' + '<td>' + result.main.humidity + ' %' + '</td>' + '</tr>')
-                .append('<tr><td>' + 'Pressure' + '</td>' + '<td>' + result.main.pressure + ' hPa' + '</td>' + '</tr>')
-                .append('<tr><td>' + 'Sunrise' + '</td>' + '<td>' + unixToNormal(result.sys.sunrise) + '</td>' + '</tr>')
-                .append('<tr><td>' + 'Sunset' + '</td>' + '<td>' + unixToNormal(result.sys.sunset) + '</td>' + '</tr>');
+            // table.append('<tr><td>' + 'Humidity' + '</td>' + '<td>' + result.main.humidity + ' %' + '</td>' + '</tr>')
+            //     .append('<tr><td>' + 'Pressure' + '</td>' + '<td>' + result.main.pressure + ' hPa' + '</td>' + '</tr>')
+            //     .append('<tr><td>' + 'Sunrise' + '</td>' + '<td>' + unixToNormal(result.sys.sunrise) + '</td>' + '</tr>')
+            //     .append('<tr><td>' + 'Sunset' + '</td>' + '<td>' + unixToNormal(result.sys.sunset) + '</td>' + '</tr>');
+
+                tableRow = (new TableRow()).AppendCol("Humidity").AppendCol( result.main.humidity + ' %' );
+                tableBuider.AppendRow(tableRow);
+                tableRow = (new TableRow()).AppendCol("Pressure").AppendCol( result.main.pressure + ' hPa' );
+                tableBuider.AppendRow(tableRow);
+                tableRow = (new TableRow()).AppendCol("Sunrise").AppendCol( unixToNormal(result.sys.sunrise) );
+                tableBuider.AppendRow(tableRow);
+                tableRow = (new TableRow()).AppendCol("Sunset").AppendCol( unixToNormal(result.sys.sunset) );
+                tableBuider.AppendRow(tableRow);
+
+                
 
             var img = $('<img>').attr("src", `images/${result.weather[0].icon}.png`)[0];
 
@@ -29,12 +47,13 @@ function cityVisualiserFunc(city) {
                 <p>${result.weather[0].description}</p>
             </div>
             <div id="city-addit-info">
-                ${table[0].outerHTML}
+                ${tableBuider.BuildHtml()}
             </div>
             `));
         })
         .catch(function (error) {
             alert('Invalid City!')
+            $('#search-input input').val("");
         });
 
     $.get(forecastWeather)
