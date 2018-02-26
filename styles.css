@@ -72,7 +72,6 @@ body > div {
     font-size: xx-large;
 }
 
-
 #city-weather > img {
     width: 80%;
     padding-left: 10%;
@@ -139,11 +138,13 @@ body > div {
 }
 
 #result-forecast ul li {
+    position: relative;
     border-radius: 25px;
     background-color: rgb(28, 56, 133);
     list-style-type: none;
     box-shadow: 5px 10px #00061f;
     width: 10%;
+    height: 100%;
 }
 
 #result-forecast ul li h2 {
@@ -162,6 +163,29 @@ body > div {
     text-align: center;
     color: rgb(204, 215, 250);
     vertical-align: text-top;
+    font-size: large;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#result-forecast .addit-forecast-info {
+    width: 90%;
+    height: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 15%;
+
+    position: absolute;
+    display: none;
+
+    background-color: rgb(38, 70, 160);
+}
+
+#result-forecast .addit-forecast-info p {
+    display: none;
+
+    text-align: left;
+
     font-size: large;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
