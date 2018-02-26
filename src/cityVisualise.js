@@ -1,3 +1,5 @@
+var oldCityAttrs = '';
+
 function cityVisualiserFunc(city) {
     var currentWeather = config.currentWeatherApi + city + config.key;
     var forecastWeather = config.forecastWeatherApi + city + config.key;
@@ -29,17 +31,26 @@ function cityVisualiserFunc(city) {
 
             var img = $('<img>').attr("src", `images/${result.weather[0].icon}.png`)[0];
 
+            var newCityAttrs =`<h1>${result.name}</h1>
+            ${img.outerHTML}
+            <p>${Math.round(result.main.temp - 273.15)} °C</p>
+            <p>${result.weather[0].description}</p>;` 
+
             $('#result-current-weather').html($(`
             <div id="city-weather">
-                <h1>${result.name}</h1>
-                ${img.outerHTML}
-                <p>${Math.round(result.main.temp - 273.15)} °C</p>
-                <p>${result.weather[0].description}</p>
+                <div id="new-city-weather">
+                    ${newCityAttrs}
+                </div>
+                ${oldCityAttrs}
             </div>
             <div id="city-addit-info">
                 ${tableBuider.BuildHtml()}
             </div>
             `));
+
+            newCityAnimation(newCityAttrs);
+
+            oldCityAttrs = newCityAttrs;
         })
         .catch(function (error) {
             alert('Invalid City!')
@@ -58,7 +69,7 @@ function cityVisualiserFunc(city) {
                                 <div class="addit-forecast-info">
                                     <p>H: ${intervals[index].main.humidity} %</p>
                                     <p>P: ${intervals[index].main.pressure} hPa</p>
-                                    <p>Tmax: ${Math.round(intervals[index].main.temp_min - 273.15)} °C</p>
+                                    <p>Tmax: ${Math.round(intervals[index].main.temp_max - 273.15)} °C</p>
                                     <p>Tmin: ${Math.round(intervals[index].main.temp_min - 273.15)} °C</p>
                                 </div>
                 
@@ -66,7 +77,7 @@ function cityVisualiserFunc(city) {
                                 ${img.outerHTML}
                                 <p>${Math.round(intervals[index].main.temp - 273.15)} °C</p>
                                 <p>${intervals[index].weather[0].description}</p>`);
-                
+
                 var windDir = windDirectionProvider(intervals[index].wind.deg);
 
                 if (windDir != null) {
