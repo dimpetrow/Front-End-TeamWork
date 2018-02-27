@@ -1,20 +1,18 @@
 function TableBuilder()
 {
     var htmlResult = [];
-    htmlResult.push("<table>");
-
-    function TableBuilder()
-    {
-    }
+    htmlResult.push('<table class="info">');
 
     function AppendRow(row)
     {
         htmlResult.push("<tr>");
+        
         row.result.forEach(element => {
-            htmlResult.push("<td>");
+            htmlResult.push('<td class="bordered shadowed table-cell">');
             htmlResult.push(element);
             htmlResult.push("</td>");
         });
+
         htmlResult.push("</tr>");
     }
 
