@@ -8,37 +8,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Weather Applet</title>
 </head>
 
 <body>
-    <div id="search-input" class="center">
-        <input type="text" class="form-control" placeholder="Search town">
+    <div id="search-input" class="bordered shadowed outer">
+        <input type="text" class="search-field bordered inner" placeholder="Search town">
     </div>
 
-    <div id="result-current-weather"></div>
+    <div id="result-current-weather" class="bordered shadowed outer"></div>
 
-    <div id="result-forecast">
-        <ul>
-            <li class="first"></li>
-            <li class="second"></li>
-            <li class="third"></li>
-            <li class="fourth"></li>
-            <li class="fifth"></li>
-            <li class="sixth"></li>
-            <li class="seventh"></li>
-            <li class="eighth"></li>
+    <div id="result-forecast" class="bordered shadowed">
+        <ul class="outer">
+            <li id="first" class="bordered shadowed inner"></li>
+            <li id="second" class="bordered shadowed inner"></li>
+            <li id="third" class="bordered shadowed inner"></li>
+            <li id="fourth" class="bordered shadowed inner"></li>
+            <li id="fifth" class="bordered shadowed inner"></li>
+            <li id="sixth" class="bordered shadowed inner"></li>
+            <li id="seventh" class="bordered shadowed inner"></li>
+            <li id="eighth" class="bordered shadowed inner"></li>
         </ul>
     </div>
 
-    <div id="otherTowns">
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+    <div id="otherTowns" class="bordered shadowed">
+        <ul class="outer">
+            <li class="bordered shadowed inner"></li>
+            <li class="bordered shadowed inner"></li>
+            <li class="bordered shadowed inner"></li>
+            <li class="bordered shadowed inner"></li>
+            <li class="bordered shadowed inner"></li>
         </ul>
     </div>
 
