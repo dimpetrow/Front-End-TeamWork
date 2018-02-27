@@ -1,115 +1,39 @@
 body {
-    padding: 20px;
+    padding: 10px;
     background-color: rgb(0, 13, 88);
-    background-size: 1800px 900px;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-div {
-    border-radius: 25px;
-    box-shadow: 5px 10px #00061f;
 }
 
 body>div {
-    background-color: rgb(0, 42, 83);
-    background-size: 1800px 900px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 #search-input {
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 20px;
+    position: relative;
     height: 50px;
 }
 
-#search-input input {
+.search-field {
+    text-align: center;
+    font-size: x-large;
     width: 100%;
     height: 100%;
-    border-radius: 25px;
-    background-color: rgb(28, 56, 133);
-    display: flex;
-    text-align: center;
-    font-size: large;
     color: rgb(204, 215, 250);
 }
 
 #result-current-weather {
     padding: 20px;
     height: 550px;
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
     background-color: rgb(0, 42, 83);
-    background-size: 1800px 900px;
-}
-
-#result-current-weather div {
-    display: block;
-    flex: 0 1 auto;
-    list-style-type: none;
-    background-color: rgb(28, 56, 133);
 }
 
 #city-weather {
     width: 27%;
-
     position: relative;
 }
 
-#city-weather>h1 {
-    text-align: center;
-    font-family: Impact, Charcoal, sans-serif;
-    color: rgb(204, 215, 250);
-    font-size: xx-large;  
-}
-
-#city-weather>img {
-    width: 80%;
-    padding-left: 10%;
-}
-
-#city-weather>p {
-    text-align: center;
-    color: rgb(204, 215, 250);
-    vertical-align: text-top;
-    font-size: xx-large;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-}
-
 #city-weather #new-city-weather {
-    width: 100%;
     height: 100%;
-
     position: absolute;
-    display: none;
-}
-
-#city-weather #new-city-weather>h1 {
-    text-align: center;
-    font-family: Impact, Charcoal, sans-serif;
-    color: rgb(204, 215, 250);
-    font-size: xx-large;
-
-    display: none;      
-}
-
-#city-weather #new-city-weather>img {
-    width: 80%;
-    padding-left: 10%;
-
-    display: none;
-}
-
-#city-weather #new-city-weather>p {
-    text-align: center;
-    color: rgb(204, 215, 250);
-    vertical-align: text-top;
-    font-size: xx-large;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-
     display: none;
 }
 
@@ -117,139 +41,131 @@ body>div {
     width: 70%;
 }
 
-#city-addit-info table {
+#city-addit-info .info {
     width: 90%;
     height: 80%;
     margin: 5%;
-    border-spacing: 30px;
-    border-collapse: separate;
-}
-
-#city-addit-info table tr td:first-child {
-    text-align: center;
-    width: 20%;
-    background-color: rgb(49, 72, 136);
-    border-radius: 25px;
-    box-shadow: 5px 10px #00061f;
-}
-
-#city-addit-info table tr td {
-    text-align: right;
-    font-size: x-large;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    color: rgb(204, 215, 250);
-    background-color: rgb(65, 91, 160);
-    border-radius: 25px;
-    box-shadow: 5px 10px #00061f;
+    border-spacing: 20px;
 }
 
 #result-forecast {
-    height: 300px;
+    height: 350px;
     padding: 20px;
+    background-color: rgb(0, 42, 83);
 }
 
-#result-forecast ul {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
+#result-forecast .outer {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-#result-forecast ul li {
+#result-forecast .inner {
     position: relative;
-    border-radius: 25px;
-    background-color: rgb(28, 56, 133);
     list-style-type: none;
-    box-shadow: 5px 10px #00061f;
     width: 10%;
-    height: 100%;
-}
-
-#result-forecast ul li h2 {
-    text-align: center;
-    font-family: Impact, Charcoal, sans-serif;
-    color: rgb(204, 215, 250);
-    font-size: large;
-}
-
-#result-forecast ul li img {
-    width: 80%;
-    padding-left: 10%;
-}
-
-#result-forecast ul li p {
-    text-align: center;
-    color: rgb(204, 215, 250);
-    vertical-align: text-top;
-    font-size: large;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #result-forecast .addit-forecast-info {
     width: 90%;
     height: 90%;
+
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 5%;
-    padding-bottom: 15%;
+    padding-bottom: 20%;
+
     position: absolute;
     display: none;
-    background-color: rgb(38, 70, 160);
-}
-
-#result-forecast .addit-forecast-info p {
-    display: none;
-    text-align: left;
-    font-size: large;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    
+    background-color: rgb(49, 72, 136);
 }
 
 #otherTowns {
     height: 450px;
     padding: 30px;
+    background-color: rgb(0, 42, 83);
 }
 
-#otherTowns>ul {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
+#otherTowns .outer {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-#otherTowns>ul li {
-    border-radius: 25px;
-    background-color: rgb(28, 56, 133);
+#otherTowns .inner {
     list-style-type: none;
-    box-shadow: 5px 10px #00061f;
     width: 18%;
+    position: relative;
 }
 
-#otherTowns>ul li h1 {
+#otherTowns .inner a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.bordered {
+    border-radius: 25px;
+}
+
+.shadowed {
+    box-shadow: 5px 10px #00061f;
+}
+
+.inner {
+    background-color: rgb(28, 56, 133);
+}
+
+.outer {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.table-cell:first-child {
+    background-color: rgb(49, 72, 136);
+    text-align: center;
+    width: 20%;
+}
+
+.table-cell {
+    background-color: rgb(65, 91, 160);
+    text-align: right;
+    font-size: x-large;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: rgb(204, 215, 250);
+}
+
+.city-name {
     text-align: center;
     font-family: Impact, Charcoal, sans-serif;
     color: rgb(204, 215, 250);
     font-size: xx-large;
 }
 
-#otherTowns>ul li img {
-    width: 80%;
-    padding-left: 10%;
-}
-
-#otherTowns>ul li p {
+.city-info {
     text-align: center;
     color: rgb(204, 215, 250);
-    vertical-align: text-top;
     font-size: x-large;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
-#otherTowns>ul li a {
-    position: absolute;
-    width: 100%;
-    height: 400px;
+.forecast-time {
+    text-align: center;
+    font-family: Impact, Charcoal, sans-serif;
+    color: rgb(204, 215, 250);
+    font-size: large;
 }
+
+.forecast-info {
+    color: rgb(204, 215, 250);
+    font-size: large;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.img-size {
+    width: 70%;
+    padding-left: 15%;
+}
+
