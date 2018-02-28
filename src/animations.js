@@ -1,5 +1,5 @@
-var animator = (function () {
-    var showNewCity = function newCityAnimation(newCityAttrs) {
+const animator = (function () {
+    const showNewCity = function newCityAnimation() {
         $('#result-current-weather #new-city-weather h1').show();
         $('#result-current-weather #new-city-weather img').show();
         $('#result-current-weather #new-city-weather p').show();
@@ -7,7 +7,7 @@ var animator = (function () {
         $('#result-current-weather #new-city-weather').slideDown(1000);
     };
 
-    var showForecastAdditionalInfo = function showForecastAdditionalInfoFunc(element) {
+    const showForecastAdditionalInfo = function showForecastAdditionalInfoFunc(element) {
         $('#result-forecast #' + element.id + ' .addit-forecast-info p').show();
 
         $('#result-forecast #' + element.id + ' .addit-forecast-info').slideToggle(200);
@@ -16,5 +16,5 @@ var animator = (function () {
     return {
         showNewCity: showNewCity,
         showForecastAdditionalInfo: showForecastAdditionalInfo
-    }
+    };
 })();

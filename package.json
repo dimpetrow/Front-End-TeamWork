@@ -1,0 +1,23 @@
+{
+  "name": "weather-applet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimpetrow/Front-End-TeamWork.git"
+  },
+  "author": "kzhekow, VeselinovStf, dimpetrow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimpetrow/Front-End-TeamWork/issues"
+  },
+  "homepage": "https://github.com/dimpetrow/Front-End-TeamWork#readme",
+  "dependencies": {
+    "eslint": "^4.18.1",
+    "eslint-config-jquery": "^1.0.1"
+  }
+}
