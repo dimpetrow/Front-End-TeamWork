@@ -14,29 +14,29 @@ const visualiser = (function () {
                 var windDir = windDirectionProvider(result.wind.deg);
 
                 if (windDir != null) {
-                    tableRow = (new TableRow()).AppendCol("Wind").AppendCol(result.wind.speed + ' m/s' + '<br>' + windDir);
+                    tableRow = (new TableRow()).AppendCol('Wind').AppendCol(result.wind.speed + ' m/s' + '<br>' + windDir);
                     tableBuider.AppendRow(tableRow);
 
                 } else {
-                    tableRow = (new TableRow()).AppendCol("Wind").AppendCol(result.wind.speed + ' m/s');
+                    tableRow = (new TableRow()).AppendCol('Wind').AppendCol(result.wind.speed + ' m/s');
                     tableBuider.AppendRow(tableRow);
                 }
 
-                tableRow = (new TableRow()).AppendCol("Humidity").AppendCol(result.main.humidity + ' %');
+                tableRow = (new TableRow()).AppendCol('Humidity').AppendCol(result.main.humidity + ' %');
                 tableBuider.AppendRow(tableRow);
-                tableRow = (new TableRow()).AppendCol("Pressure").AppendCol(result.main.pressure + ' hPa');
+                tableRow = (new TableRow()).AppendCol('Pressure').AppendCol(result.main.pressure + ' hPa');
                 tableBuider.AppendRow(tableRow);
-                tableRow = (new TableRow()).AppendCol("Sunrise").AppendCol(unixToNormal(result.sys.sunrise));
+                tableRow = (new TableRow()).AppendCol('Sunrise').AppendCol(unixToNormal(result.sys.sunrise));
                 tableBuider.AppendRow(tableRow);
-                tableRow = (new TableRow()).AppendCol("Sunset").AppendCol(unixToNormal(result.sys.sunset));
+                tableRow = (new TableRow()).AppendCol('Sunset').AppendCol(unixToNormal(result.sys.sunset));
                 tableBuider.AppendRow(tableRow);
 
-                var img = $('<img>').attr("src", `images/${result.weather[0].icon}.png`).attr('class', 'img-size')[0];
+                var img = $('<img>').attr('src', `images/${result.weather[0].icon}.png`).attr('class', 'img-size')[0];
 
                 var newCityAttrs = `<h1 class="city-name">${result.name}</h1>
                                     ${img.outerHTML}
                                     <p class="city-info">${Math.round(result.main.temp - 273.15)} °C</p>
-                                    <p class="city-info">${result.weather[0].description}</p>;`
+                                    <p class="city-info">${result.weather[0].description}</p>;`;
 
                 $('#result-current-weather').html($(`<div id="city-weather" class="bordered shadowed inner">
                                                         <div id="new-city-weather" class="bordered shadowed inner">
@@ -54,9 +54,9 @@ const visualiser = (function () {
                 oldCityAttrs = newCityAttrs;
             })
             .catch(function () {
-                alert('Invalid City!')
+                alert('Invalid City!');
 
-                $('#search-input input').val("");
+                $('#search-input input').val('');
             });
 
         $.get(forecastWeather)
